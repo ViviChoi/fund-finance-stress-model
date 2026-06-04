@@ -1,0 +1,89 @@
+{
+  "_meta": {
+    "purpose": "Five hypothetical PE fund profiles for live demo of nav_stress_model.",
+    "calibration": "Sector weights are constructed to span the realistic range of 2024-2026 European power-electronics PE strategies. NAV figures are illustrative.",
+    "disclaimer": "All funds are fictional. Any resemblance to actual funds, GPs, or portfolio companies is unintentional and immaterial."
+  },
+  "funds": [
+    {
+      "id": "ETC2",
+      "name": "Energy Transition Capital II",
+      "vintage": 2022,
+      "size_musd": 1800,
+      "strategy": "Pan-European EV charging infrastructure, battery cell makers, and grid-storage power electronics",
+      "sub_sector_weights": {
+        "ev_powertrain":      0.50,
+        "data_center_power":  0.05,
+        "renewable_power":    0.30,
+        "industrial_drives":  0.15
+      },
+      "facility_size_musd_benign":     540,
+      "facility_size_musd_aggressive": 900,
+      "narrative_for_demo": "Tier-1 climate sponsor; high vintage-2022 entry valuations on the EV side now under pressure. Strong policy tailwind but heavily exposed to EV consumer cycle."
+    },
+    {
+      "id": "HICV",
+      "name": "Hyperscale Infrastructure Continuation Vehicle",
+      "vintage": 2023,
+      "size_musd": 2500,
+      "strategy": "Data-center power infrastructure (PSU, UPS, liquid-cooled rack power) serving the AI build-out",
+      "sub_sector_weights": {
+        "ev_powertrain":      0.10,
+        "data_center_power":  0.75,
+        "renewable_power":    0.05,
+        "industrial_drives":  0.10
+      },
+      "facility_size_musd_benign":     750,
+      "facility_size_musd_aggressive": 1250,
+      "narrative_for_demo": "GP-led CV recycling 2018-vintage data-center assets at marked-up NAV. Hyperscaler concentration risk: top-3 customers >80% of revenue across portfolio."
+    },
+    {
+      "id": "EVSC3",
+      "name": "EV Supply Chain Specialist III",
+      "vintage": 2024,
+      "size_musd": 800,
+      "strategy": "Concentrated bets on EV powertrain Tier-1 suppliers (inverter modules, OBC, SiC device makers)",
+      "sub_sector_weights": {
+        "ev_powertrain":      0.85,
+        "data_center_power":  0.05,
+        "renewable_power":    0.05,
+        "industrial_drives":  0.05
+      },
+      "facility_size_musd_benign":     240,
+      "facility_size_musd_aggressive": 400,
+      "narrative_for_demo": "Specialist GP, third fund in series. Extreme sector concentration is the strategy. NAV facility against this is the canonical test case for sub-sector underwriting."
+    },
+    {
+      "id": "DEITF",
+      "name": "Diversified European Industrial Tech Fund",
+      "vintage": 2021,
+      "size_musd": 1200,
+      "strategy": "Generalist European industrial technology with secondary exposure across all four power-electronics sub-sectors",
+      "sub_sector_weights": {
+        "ev_powertrain":      0.15,
+        "data_center_power":  0.30,
+        "renewable_power":    0.25,
+        "industrial_drives":  0.30
+      },
+      "facility_size_musd_benign":     360,
+      "facility_size_musd_aggressive": 600,
+      "narrative_for_demo": "Classic industrial-tech generalist. On paper a 'safe' diversified portfolio, but sub-sector decomposition reveals less headroom than the single-bucket view suggests."
+    },
+    {
+      "id": "PPES",
+      "name": "Polimi Power Electronics Spinout Fund",
+      "vintage": 2023,
+      "size_musd": 300,
+      "strategy": "Early-growth European power-electronics startups across EV, DC power, and grid applications",
+      "sub_sector_weights": {
+        "ev_powertrain":      0.35,
+        "data_center_power":  0.25,
+        "renewable_power":    0.25,
+        "industrial_drives":  0.15
+      },
+      "facility_size_musd_benign":      90,
+      "facility_size_musd_aggressive":  150,
+      "narrative_for_demo": "Smaller specialist fund, technology-curious LP base. Balanced exposure across sub-sectors makes it the cleanest illustration of how the model behaves under a 'normal' tilt."
+    }
+  ]
+}

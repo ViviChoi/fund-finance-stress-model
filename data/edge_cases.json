@@ -1,0 +1,137 @@
+{
+  "_meta": {
+    "purpose": "Boundary-condition test funds — for debugging the model and as 'extreme example' material if a banker asks 'what happens if I tweak X?'",
+    "use_in_demo": "Don't lead with these — they're contrived. Pull them out only if Rossella explicitly asks 'what's the breaking point?'",
+    "disclaimer": "Synthetic test fixtures, not representative of any real fund."
+  },
+  "funds": [
+    {
+      "id": "EDGE-EV100",
+      "name": "100% EV Powertrain (pure)",
+      "vintage": 2025,
+      "size_musd": 500,
+      "strategy": "Test fixture: maximal EV concentration",
+      "sub_sector_weights": {
+        "ev_powertrain":      1.00,
+        "data_center_power":  0.00,
+        "renewable_power":    0.00,
+        "industrial_drives":  0.00
+      },
+      "facility_size_musd_benign":     150,
+      "facility_size_musd_aggressive": 250,
+      "narrative_for_demo": "The single-sector worst case. Use to anchor what the model thinks the floor of a stressed EV-pure portfolio looks like."
+    },
+    {
+      "id": "EDGE-DC100",
+      "name": "100% Data-Center Power (pure)",
+      "vintage": 2025,
+      "size_musd": 500,
+      "strategy": "Test fixture: maximal data-center concentration",
+      "sub_sector_weights": {
+        "ev_powertrain":      0.00,
+        "data_center_power":  1.00,
+        "renewable_power":    0.00,
+        "industrial_drives":  0.00
+      },
+      "facility_size_musd_benign":     150,
+      "facility_size_musd_aggressive": 250,
+      "narrative_for_demo": "The single-sector best case. Use as a contrast to EV-pure — the gap is the model's main argument."
+    },
+    {
+      "id": "EDGE-RE100",
+      "name": "100% Renewable Power (pure)",
+      "vintage": 2025,
+      "size_musd": 500,
+      "strategy": "Test fixture: maximal renewables concentration",
+      "sub_sector_weights": {
+        "ev_powertrain":      0.00,
+        "data_center_power":  0.00,
+        "renewable_power":    1.00,
+        "industrial_drives":  0.00
+      },
+      "facility_size_musd_benign":     150,
+      "facility_size_musd_aggressive": 250,
+      "narrative_for_demo": "Test how the policy-shock sub-sector behaves in isolation."
+    },
+    {
+      "id": "EDGE-IND100",
+      "name": "100% Industrial Drives (pure)",
+      "vintage": 2025,
+      "size_musd": 500,
+      "strategy": "Test fixture: maximal industrial concentration",
+      "sub_sector_weights": {
+        "ev_powertrain":      0.00,
+        "data_center_power":  0.00,
+        "renewable_power":    0.00,
+        "industrial_drives":  1.00
+      },
+      "facility_size_musd_benign":     150,
+      "facility_size_musd_aggressive": 250,
+      "narrative_for_demo": "The defensive baseline. Shows the lower envelope of cyclicality across power electronics."
+    },
+    {
+      "id": "EDGE-EQUAL",
+      "name": "Equal weights (25/25/25/25)",
+      "vintage": 2025,
+      "size_musd": 500,
+      "strategy": "Test fixture: maximally diversified across the four sub-sectors",
+      "sub_sector_weights": {
+        "ev_powertrain":      0.25,
+        "data_center_power":  0.25,
+        "renewable_power":    0.25,
+        "industrial_drives":  0.25
+      },
+      "facility_size_musd_benign":     150,
+      "facility_size_musd_aggressive": 250,
+      "narrative_for_demo": "The naive-diversification baseline. Compare against the realistic Diversified European Industrial Tech Fund in example_funds.json — what changes when the diversification is unequal?"
+    },
+    {
+      "id": "EDGE-NEAR-BREACH",
+      "name": "Engineered near-breach (calibrated to ~64.9% LTV at 50%)",
+      "vintage": 2025,
+      "size_musd": 500,
+      "strategy": "Test fixture: parameters chosen so stressed LTV lands ~0.1pp below covenant under aggressive sizing",
+      "sub_sector_weights": {
+        "ev_powertrain":      0.34,
+        "data_center_power":  0.20,
+        "renewable_power":    0.26,
+        "industrial_drives":  0.20
+      },
+      "facility_size_musd_benign":     150,
+      "facility_size_musd_aggressive": 250,
+      "narrative_for_demo": "The hair's-breadth case. Useful for live-demonstrating how small a tilt is needed to flip from 'safe' to 'breach' — bump EV exposure by 1pp and watch it cross."
+    },
+    {
+      "id": "EDGE-AGG-EV-SMALL-FAC",
+      "name": "EV-heavy fund with small facility — should be safe",
+      "vintage": 2025,
+      "size_musd": 500,
+      "strategy": "Test fixture: high EV concentration but conservative facility sizing",
+      "sub_sector_weights": {
+        "ev_powertrain":      0.70,
+        "data_center_power":  0.10,
+        "renewable_power":    0.10,
+        "industrial_drives":  0.10
+      },
+      "facility_size_musd_benign":      75,
+      "facility_size_musd_aggressive": 125,
+      "narrative_for_demo": "Demonstrates that 'concentration' alone doesn't breach — it's concentration AND aggressive sizing together. Useful for the 'why don't you just always size down?' question."
+    },
+    {
+      "id": "EDGE-MIXED-DEFENSIVE-FACIL",
+      "name": "Defensive mix with very aggressive facility",
+      "vintage": 2025,
+      "size_musd": 500,
+      "strategy": "Test fixture: heavy data-center + industrial (defensive sub-sectors) but high initial LTV",
+      "sub_sector_weights": {
+        "ev_powertrain":      0.05,
+        "data_center_power":  0.55,
+        "renewable_power":    0.10,
+        "industrial_drives":  0.30
+      },
+      "facility_size_musd_benign":     200,
+      "facility_size_musd_aggressive": 325,
+      "narrative_for_demo": "The 'I trusted the secular tailwind' case. Even with very aggressive sizing, defensive mix holds up — but only just."
+    }
+  ]
+}
