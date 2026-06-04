@@ -357,27 +357,62 @@ without running setup.
 
 ### Q. I want to use this on Windows for tomorrow's demo.
 
-Two options:
+#### Step-by-step Win quick-test (do this once tonight, BEFORE the demo)
 
-1. **Local Python on Windows** (recommended if you already have
-   Python 3.10+ installed):
+> **Status**: the Mac path has been verified end-to-end with SHA256-
+> identical output reproducibility. The Windows path was NOT live-
+> tested (Win VM was offline at build time) — but the `dev.py` runner
+> is OS-agnostic Python, so it *should* work as long as Python 3.10+
+> is installed on the Windows box.
+
+1. **Boot your Win VM** (Parallels → Win11).
+2. **Copy the project folder over**. Easiest paths:
+   * Drag-drop the `~/Desktop/UniCredit-FundFinancing-Application/`
+     folder into the Win desktop via Parallels.
+   * Or, from the Mac terminal:
+     ```
+     scp -r ~/Desktop/UniCredit-FundFinancing-Application winvm:~/Desktop/
+     ```
+3. **Open PowerShell on Win**, cd into the folder:
+   ```
+   > cd $env:USERPROFILE\Desktop\UniCredit-FundFinancing-Application
+   ```
+4. **Check Python**:
+   ```
+   > python --version
+   ```
+   If it's `3.10+`, proceed. If not, install from python.org first
+   (check "Add to PATH" during install).
+5. **Setup**:
    ```
    > python dev.py setup
-   > python dev.py all
+   ```
+   First-time installs of streamlit + pandas + numpy may take 2–3 min
+   on Windows (some wheels build from source).
+6. **Test**:
+   ```
    > python dev.py test
    ```
-   That's it. The `dev.py` runner handles Windows-specific paths
-   (`.venv\Scripts\python.exe` vs `.venv/bin/python`) automatically.
+   Should print `29 passed`. If any fail, **do not present from this
+   box** — fall back to Mac.
+7. **Launch the WebUI**:
+   ```
+   > python dev.py serve
+   ```
+   Open `http://localhost:8501` in any browser on the Win VM.
+8. **Compare visually** with Mac to confirm nothing rendered weirdly.
 
-2. **Mac stays primary** (if your Windows VM doesn't have Python):
-   Just present from Mac. The folder is portable — `setup.sh` on Mac,
-   `dev.py setup` on Windows; both work from the same source files.
+If steps 5–7 all succeed, the Win path is verified for your demo.
 
-**Note on cross-platform testing**: the Mac path has been verified
-end-to-end with SHA256-identical output reproducibility (see test
-log). The Windows path uses the same Python code via `dev.py`, so it
-**should** behave identically. If something breaks on Windows, the
-first thing to check is whether `python --version` reports 3.10+.
+#### If something breaks on Win
+
+| Symptom                                   | Fix                                                                          |
+|-------------------------------------------|-------------------------------------------------------------------------------|
+| `python` not recognised                   | Install Python 3.10+ from python.org with "Add to PATH" checked.             |
+| `python dev.py setup` errors on pip       | Try `python -m pip install --upgrade pip` first, then re-run.                 |
+| Tests fail with import error              | Probably a path issue; check `python --version` ≥ 3.10.                       |
+| Streamlit page blank in browser           | Try Chrome instead of Edge; firewall may block; check terminal for errors.   |
+| Demo via Mac is easier anyway             | **Use Mac.** The deliverable is the same; Mac path is the proven path.       |
 
 ### Q. The tests fail — what do I do?
 

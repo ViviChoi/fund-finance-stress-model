@@ -45,11 +45,12 @@
 ├── dev.cmd                            ← Windows convenience wrapper for dev.py
 ├── .gitignore                         ← keeps venv / cache out of version control
 ├── .venv/                             ← local Python env (gitignored, recreated by setup)
+├── app.py                             ← ⭐ Streamlit WebUI (interactive demo)
 ├── code/
 │   ├── nav_stress_model.py            ← Section 3 model (runnable)
 │   ├── sector_matrix.py               ← Section 2 figure script
 │   ├── build_deck.py                  ← pptx generator
-│   ├── demo_runner.py                 ← 5-fund demo runner (loads data/example_funds.json)
+│   ├── demo_runner.py                 ← 5-fund demo runner (--data flag for swap)
 │   ├── pseudocode.md                  ← logic walkthrough + defence notes
 │   └── requirements.txt
 ├── data/
@@ -82,7 +83,8 @@ On any machine with Python 3.10+, from this directory:
 ```bash
 ./setup.sh          # one-time: creates .venv and installs deps
 make all            # regenerate figures + demo + deck
-make test           # 26 sanity tests — should all pass
+make test           # 29 sanity tests — should all pass
+make serve          # ⭐ launch the WebUI on localhost:8501
 ```
 
 **Windows** (or any OS — universal path):
@@ -90,11 +92,13 @@ make test           # 26 sanity tests — should all pass
 python dev.py setup
 python dev.py all
 python dev.py test
+python dev.py serve
 ```
 
 Both paths produce bit-identical outputs (verified via SHA256 in
-clean-room reproduction). No conda, no Docker, no system-level
-installs.
+clean-room reproduction on Mac; Windows path uses the same Python
+code via `dev.py`, so it should behave identically — see USAGE.md
+for the Win quick-test).
 
 ### Granular targets
 
