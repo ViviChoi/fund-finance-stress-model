@@ -1,5 +1,11 @@
 # Power-Electronics Risk Lens on NAV Facilities
 
+[![Live demo](https://img.shields.io/badge/🚀_Live_demo-Hugging_Face_Spaces-FFD21E?logo=huggingface&logoColor=black)](https://huggingface.co/spaces/ChoiVivi/fund-finance-stress-model)
+[![Python](https://img.shields.io/badge/python-3.10%2B-blue)](https://www.python.org/)
+[![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
+
+> **🚀 Try it live (no install, no login):** [huggingface.co/spaces/ChoiVivi/fund-finance-stress-model](https://huggingface.co/spaces/ChoiVivi/fund-finance-stress-model)
+>
 > A small, opinionated NAV facility stress model that decomposes a
 > power-electronics PE fund into its underlying sub-sectors (EV
 > powertrain, data-center power, renewables, industrial drives) and
