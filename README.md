@@ -264,4 +264,19 @@ facts are:
 
 ---
 
+## Licence
+
+Released under the **MIT License** — see [`LICENSE`](LICENSE). In short:
+
+* Commercial use is permitted.
+* Modification and redistribution are permitted.
+* Attribution required (keep the copyright notice).
+* No warranty.
+
+All numerical assumptions in the model are illustrative. Nothing here
+constitutes financial advice or an authoritative view on any institution's
+products. See the LICENSE file for the full attribution and scope notes.
+
+---
+
 *Built 2026-06. Honest about scope, deliberate about depth.*
