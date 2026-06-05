@@ -1,3 +1,13 @@
+# --- Personal preparation materials (NEVER push to public repo) ---
+# These are private prep / study / outreach drafts. They stay on local
+# disk for the author's own use but must not appear in any public
+# distribution of this repository.
+使用说明.md
+content/02-linkedin-dm.md
+content/03-interview-qa.md
+content/04-mock-interview.md
+content/05-demo-walkthrough.md
+
 # Local Python environment — recreated by ./setup.sh
 .venv/
 
