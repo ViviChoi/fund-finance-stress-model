@@ -29,6 +29,14 @@ import sys
 import venv
 from pathlib import Path
 
+# Force UTF-8 stdout/stderr so non-ASCII glyphs (→, ✓, ⚠️) print on
+# Windows cmd / PowerShell, which default to legacy GBK / cp1252.
+for _stream in (sys.stdout, sys.stderr):
+    try:
+        _stream.reconfigure(encoding="utf-8", errors="replace")
+    except (AttributeError, OSError):
+        pass
+
 
 # ---------------------------------------------------------------------------
 # Paths
@@ -36,7 +44,9 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent
 VENV_DIR = ROOT / ".venv"
-REQS = ROOT / "code" / "requirements.txt"
+REQS_CORE = ROOT / "code" / "requirements.txt"
+REQS_WEBUI = ROOT / "code" / "requirements-webui.txt"
+REQS = REQS_CORE  # back-compat alias
 TESTS_DIR = ROOT / "tests"
 
 IS_WIN = sys.platform == "win32"
@@ -95,18 +105,18 @@ def cmd_setup() -> None:
         log(f"Creating venv at {VENV_DIR.relative_to(ROOT)}")
         venv.create(VENV_DIR, with_pip=True, clear=False)
 
-    if not REQS.exists():
-        fail(f"Requirements file not found: {REQS}")
+    if not REQS_CORE.exists():
+        fail(f"Requirements file not found: {REQS_CORE}")
 
     log("Upgrading pip")
     subprocess.run([str(VENV_PY), "-m", "pip", "install", "--quiet",
                     "--upgrade", "pip"], check=True)
 
-    log(f"Installing dependencies from {REQS.relative_to(ROOT)}")
+    log(f"Installing core dependencies from {REQS_CORE.relative_to(ROOT)}")
     subprocess.run([str(VENV_PY), "-m", "pip", "install", "--quiet",
-                    "-r", str(REQS)], check=True)
+                    "-r", str(REQS_CORE)], check=True)
 
-    log("Verifying install")
+    log("Verifying core install")
     verify_code = (
         "import numpy, pandas, matplotlib, pptx, pytest;"
         "print(f'  numpy        {numpy.__version__}');"
@@ -116,6 +126,40 @@ def cmd_setup() -> None:
         "print(f'  pytest       {pytest.__version__}');"
     )
     subprocess.run([str(VENV_PY), "-c", verify_code], check=True)
+
+    # ----- WebUI dependencies (best-effort) -----
+    if REQS_WEBUI.exists():
+        log(f"Installing WebUI dependencies from {REQS_WEBUI.relative_to(ROOT)}")
+        result = subprocess.run(
+            [str(VENV_PY), "-m", "pip", "install", "--quiet",
+             "-r", str(REQS_WEBUI)],
+            capture_output=True, text=True,
+        )
+        if result.returncode == 0:
+            log("Verifying WebUI install")
+            try:
+                subprocess.run(
+                    [str(VENV_PY), "-c",
+                     "import streamlit, plotly;"
+                     "print(f'  streamlit    {streamlit.__version__}');"
+                     "print(f'  plotly       {plotly.__version__}')"],
+                    check=True,
+                )
+                ok("WebUI dependencies installed — `python dev.py serve` will work.")
+            except subprocess.CalledProcessError:
+                print("⚠️  WebUI install reported success but imports failed.")
+        else:
+            print()
+            print("⚠️  WebUI dependencies (streamlit / plotly) failed to install.")
+            print("    Common cause: Windows ARM64 lacks prebuilt wheels for")
+            print("    pyarrow / httptools, so they try to build from source.")
+            print()
+            print("    Core functionality (model, tests, deck, CLI demo)")
+            print("    still works. WebUI tab (`dev.py serve`) won't.")
+            print()
+            print("    Fix: install Visual C++ Build Tools, then re-run setup.")
+            print("    Or: just use the Mac path for the WebUI demo.")
+            print()
 
     ok("Setup complete.")
     print()

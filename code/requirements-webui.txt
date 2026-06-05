@@ -1,0 +1,19 @@
+# WebUI dependencies (optional — install with:
+#   pip install -r code/requirements-webui.txt
+#
+# Installed automatically by `dev.py setup` as a best-effort step. If
+# the install fails (e.g. on Windows ARM64 due to missing prebuilt
+# pyarrow / httptools wheels), the rest of the project — model, tests,
+# slide deck, CLI demo — continues to work.
+#
+# To regain WebUI capability on Windows ARM64, install Visual C++ Build
+# Tools, then re-run `python dev.py setup`. Alternatively, present from
+# Mac.
+
+streamlit>=1.32
+plotly>=5.18
+
+# Optional screenshot tooling — only needed if you want to take headless
+# screenshots of the WebUI for inclusion in slides / reports:
+#   pip install playwright
+#   python -m playwright install chromium

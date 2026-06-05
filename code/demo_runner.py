@@ -58,7 +58,7 @@ class FundScenario:
 
 def load_funds(path: Path | None = None) -> list[FundScenario]:
     path = Path(path) if path else DEFAULT_DATA_PATH
-    with path.open() as f:
+    with path.open(encoding="utf-8") as f:
         payload = json.load(f)
     return [
         FundScenario(

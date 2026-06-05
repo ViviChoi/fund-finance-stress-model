@@ -15,7 +15,8 @@ set -euo pipefail
 cd "$(dirname "$0")"
 
 VENV_DIR=".venv"
-REQS="code/requirements.txt"
+REQS_CORE="code/requirements.txt"
+REQS_WEBUI="code/requirements-webui.txt"
 
 # ---- Sanity checks --------------------------------------------------------
 
@@ -46,25 +47,42 @@ fi
 
 # ---- Install dependencies -------------------------------------------------
 
-if [ ! -f "$REQS" ]; then
-    echo "✗  $REQS not found. Expected this script to be run from project root."
+if [ ! -f "$REQS_CORE" ]; then
+    echo "✗  $REQS_CORE not found. Expected this script to be run from project root."
     exit 1
 fi
 
-echo "→  Installing dependencies from $REQS"
+echo "→  Upgrading pip"
 "$VENV_DIR/bin/pip" install --quiet --upgrade pip
-"$VENV_DIR/bin/pip" install --quiet -r "$REQS"
 
-# ---- Verify ---------------------------------------------------------------
+echo "→  Installing core dependencies from $REQS_CORE"
+"$VENV_DIR/bin/pip" install --quiet -r "$REQS_CORE"
 
-echo "→  Verifying install"
+# ---- Verify core ----------------------------------------------------------
+
+echo "→  Verifying core install"
 "$VENV_DIR/bin/python" -c "
-import numpy, pandas, matplotlib, pptx
+import numpy, pandas, matplotlib, pptx, pytest
 print(f'  numpy        {numpy.__version__}')
 print(f'  pandas       {pandas.__version__}')
 print(f'  matplotlib   {matplotlib.__version__}')
 print(f'  python-pptx  {pptx.__version__}')
+print(f'  pytest       {pytest.__version__}')
 "
+
+# ---- WebUI dependencies (best-effort) --------------------------------------
+
+if [ -f "$REQS_WEBUI" ]; then
+    echo "→  Installing WebUI dependencies from $REQS_WEBUI"
+    if "$VENV_DIR/bin/pip" install --quiet -r "$REQS_WEBUI" 2>/dev/null; then
+        "$VENV_DIR/bin/python" -c "import streamlit, plotly; print(f'  streamlit    {streamlit.__version__}'); print(f'  plotly       {plotly.__version__}')"
+        echo "✓  WebUI dependencies installed."
+    else
+        echo "⚠️  WebUI install failed. Core functionality still works."
+        echo "    On Windows ARM64 this is expected (no prebuilt wheels for"
+        echo "    pyarrow / httptools). Use the Mac path for the WebUI."
+    fi
+fi
 
 cat <<EOF
 

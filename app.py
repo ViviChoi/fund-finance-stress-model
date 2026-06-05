@@ -153,7 +153,7 @@ DATASETS = {
 
 @st.cache_data
 def load_fund_json(path: str) -> dict:
-    return json.loads(Path(path).read_text())
+    return json.loads(Path(path).read_text(encoding="utf-8"))
 
 
 def load_uploaded(uploaded_bytes: bytes) -> dict | None:

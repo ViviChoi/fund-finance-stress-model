@@ -183,7 +183,7 @@ class TestSweepGrid:
 class TestDemoData:
     def test_example_funds_json_loads(self):
         path = ROOT / "data" / "example_funds.json"
-        with path.open() as f:
+        with path.open(encoding="utf-8") as f:
             data = json.load(f)
         assert "funds" in data
         assert len(data["funds"]) == 5
@@ -192,7 +192,7 @@ class TestDemoData:
         path = ROOT / "data" / "edge_cases.json"
         if not path.exists():
             pytest.skip("edge_cases.json not present (optional)")
-        with path.open() as f:
+        with path.open(encoding="utf-8") as f:
             data = json.load(f)
         assert "funds" in data
         assert len(data["funds"]) >= 5
@@ -204,7 +204,7 @@ class TestDemoData:
     def test_all_fund_weights_sum_to_one(self, fund_path):
         if not fund_path.exists():
             pytest.skip(f"{fund_path.name} not present")
-        with fund_path.open() as f:
+        with fund_path.open(encoding="utf-8") as f:
             data = json.load(f)
         for fund in data["funds"]:
             total = sum(fund["sub_sector_weights"].values())
@@ -238,16 +238,29 @@ class TestWebUI:
         import ast
         path = ROOT / "app.py"
         assert path.exists(), "app.py missing"
-        src = path.read_text()
+        src = path.read_text(encoding="utf-8")
         ast.parse(src)  # raises SyntaxError if broken
 
     def test_app_py_imports_resolve(self):
         # Import the underlying modules app.py uses. If we can import them
         # cleanly, app.py at least has a chance of running.
+        #
+        # Streamlit and plotly are OPTIONAL — on platforms where their
+        # wheels won't build (e.g. Windows ARM64) the WebUI is unavailable
+        # but the rest of the project still works. Skip the test in that
+        # case rather than fail.
         import importlib
-        for mod in ["streamlit", "plotly", "plotly.graph_objects",
-                    "plotly.subplots", "pandas", "numpy",
-                    "nav_stress_model"]:
+        for mod in ["streamlit", "plotly"]:
+            try:
+                importlib.import_module(mod)
+            except ImportError:
+                pytest.skip(
+                    f"WebUI dependency {mod!r} not installed; this is "
+                    f"expected on Windows ARM64. Core functionality "
+                    f"continues to work without it."
+                )
+        for mod in ["plotly.graph_objects", "plotly.subplots",
+                    "pandas", "numpy", "nav_stress_model"]:
             importlib.import_module(mod)
 
     def test_uploaded_fund_validation_logic(self):
