@@ -167,6 +167,75 @@ in [`code/`](../code/) — happy to walk through it.
 
 ---
 
+## 5. Beyond Power Electronics — how the same reflex extends
+
+The methodology in §2–3 is not specific to power electronics; it's a
+reflex for any sector where a single label hides multiple credit
+profiles. Three sketches of where the same decomposition applies — all
+sectors I would *not* claim native expertise in today, but where the
+*approach* would be identical:
+
+### Semiconductors
+A typical AI-era semiconductor PE fund would decompose into:
+* **GPU / AI accelerators** — 3–5 hyperscaler concentration, capex-cycle
+  driven
+* **ASIC specialists** — per-customer design cycle, sticky once won
+* **Advanced packaging (CoWoS / HBM)** — capacity bottleneck premium
+* **Lithography & deposition equipment** — oligopoly (ASML, Applied,
+  Lam, KLA)
+* **Mature-node foundries** — defensive, fragmented buyer base
+
+> *Stress dispersion comes from* **customer concentration × process-node
+> generation × capex-cycle phase**.
+
+### Medical devices
+A surgical / interventional medtech PE fund would decompose into:
+* **Surgical robotics platforms** — 7–10y replacement cycles, lock-in
+* **Disposables & single-use instruments** — recurring revenue, GMP
+  moat
+* **Digital surgery / workflow software** — SaaS-like margin, regulated
+* **Interventional cardiology / structural heart** — FDA-cleared pipeline
+  timing risk
+* **Diagnostic imaging** — reimbursement-code dynamics, hospital capex
+
+> *Stress dispersion comes from* **FDA timing × hospital capex cycle ×
+> reimbursement-code structure × disposable-vs-capital margin layering**.
+
+### Grid modernisation & T&D
+A grid / electrification PE fund would decompose into:
+* **T&D equipment (transformers, switchgear)** — 2–4y lead-time crisis,
+  scarcity premium
+* **Grid-scale storage integrators** — interconnection-queue dependent
+* **DERMS / utility software** — recurring revenue, integration risk
+* **EV charging infrastructure** — utilisation curve, policy-sensitive
+* **Interconnection / EPC services** — queue management, regulatory
+
+> *Stress dispersion comes from* **utility capex cycle × policy framework
+> × interconnection queue length × hard-asset lead-time**.
+
+---
+
+> **I can sketch the framework. Calibrating any of these into
+> covenant-relevant stress numbers requires private NAV marks the desk
+> has and I don't — that's the conversation I'd want to have, not an
+> answer I'd pretend to have ready.**
+
+The point of these three sketches is not that I claim expertise across
+sectors. It's that the **reflex itself is the transferable asset**:
+
+1. When I see a new technology-driven sector, my engineering training
+   automatically asks: *what are the sub-units? what is the demand
+   driver per sub-unit? where is the buyer-concentration risk? what's
+   the technology-cycle position?*
+2. **Power electronics is where I have native depth** and could be
+   useful in week one. The other sectors are where I would build that
+   depth quickly, using the same decomposition reflex as scaffolding.
+3. A junior hire who can do this reflex consistently — across any
+   technology-driven sector — is **a reusable asset**. One with deep
+   knowledge of a single sector and nothing else is a fixed cost.
+
+---
+
 ### Sources
 
 1. *NAV-igating the future: Trends from the 15th FFA Global

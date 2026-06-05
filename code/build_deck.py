@@ -156,7 +156,7 @@ def _slide_chrome(slide, *, page_num, total_pages, eyebrow=None, title=None):
 # Slide builders
 # ---------------------------------------------------------------------------
 
-TOTAL_PAGES = 12
+TOTAL_PAGES = 13
 
 
 def slide_01_title(prs):
@@ -660,10 +660,107 @@ def slide_10_limits_and_next(prs):
                        color=INK, line_spacing=1.30, space_before=8)
 
 
-def slide_11_about(prs):
+def slide_11_beyond(prs):
+    """Beyond Power Electronics — methodology transfer (Option B framing)."""
     slide = prs.slides.add_slide(prs.slide_layouts[6])
     _slide_chrome(slide, page_num=11, total_pages=TOTAL_PAGES,
-                  eyebrow="09  ·  About me",
+                  eyebrow="09  ·  Methodology transfer",
+                  title="The reflex extends beyond power electronics")
+
+    # Lead-in panel
+    _add_rect(slide, Inches(0.55), Inches(1.80),
+              Inches(12.2), Inches(0.85), BG_PANEL)
+    _add_textbox(slide, Inches(0.85), Inches(1.95),
+                 Inches(11.6), Inches(0.30),
+                 "THESIS", size=10, bold=True, color=ACCENT)
+    _add_textbox(slide, Inches(0.85), Inches(2.20),
+                 Inches(11.6), Inches(0.55),
+                 "The decomposition reflex is not specific to power electronics. "
+                 "Three sketches — sectors where the same approach applies, "
+                 "deliberately without numbers to avoid claiming expertise I "
+                 "don't yet have.",
+                 size=12, italic=True, color=INK, line_spacing=1.35)
+
+    # Three columns
+    col_w = Inches(4.0)
+    col_x_start = Inches(0.55)
+    col_gap = Inches(0.15)
+    col_y = Inches(2.85)
+    col_h = Inches(3.30)
+
+    columns = [
+        ("Semiconductors", "AI-era semis PE fund", [
+            "GPU / AI accelerators — hyperscaler concentration",
+            "ASIC specialists — per-customer design cycle",
+            "Advanced packaging (CoWoS / HBM) — capacity premium",
+            "Lithography & deposition (ASML, Applied, Lam) — oligopoly",
+            "Mature-node foundries — defensive baseline",
+        ], "Customer concentration × process-node × capex-cycle"),
+
+        ("Medical devices", "Surgical / interventional medtech PE", [
+            "Surgical robotics — 7–10y replacement cycles",
+            "Disposables & instruments — recurring, GMP moat",
+            "Digital surgery / workflow software — SaaS-like",
+            "Interventional cardiology — FDA-pipeline timing",
+            "Diagnostic imaging — reimbursement-code dynamics",
+        ], "FDA timing × hospital capex × reimbursement codes"),
+
+        ("Grid modernisation", "T&D / electrification PE fund", [
+            "T&D equipment — 2–4y lead-time crisis premium",
+            "Grid-scale storage integrators — queue-dependent",
+            "DERMS / utility software — recurring + integration",
+            "EV charging infrastructure — utilisation × policy",
+            "Interconnection / EPC services — queue management",
+        ], "Utility capex × policy × queue length × lead-time"),
+    ]
+
+    for i, (title, subtitle, items, dispersion) in enumerate(columns):
+        x = col_x_start + (col_w + col_gap) * i
+        _add_rect(slide, x, col_y, col_w, col_h, BG_PANEL)
+        _add_rect(slide, x, col_y, col_w, Inches(0.05), ACCENT)
+
+        # Title + subtitle
+        _add_textbox(slide, x + Inches(0.20), col_y + Inches(0.15),
+                     col_w - Inches(0.30), Inches(0.35),
+                     title, size=14, bold=True, color=INK)
+        _add_textbox(slide, x + Inches(0.20), col_y + Inches(0.50),
+                     col_w - Inches(0.30), Inches(0.25),
+                     subtitle, size=9, italic=True, color=INK_SOFT)
+
+        # Sub-sector bullets
+        tb = _add_textbox(slide, x + Inches(0.20), col_y + Inches(0.85),
+                          col_w - Inches(0.40), Inches(1.80),
+                          "", size=10)
+        for item in items:
+            _add_paragraph(tb, item, size=10, bullet=True, color=INK,
+                           space_before=3, line_spacing=1.25)
+
+        # Dispersion driver line
+        _add_textbox(slide, x + Inches(0.20), col_y + Inches(2.65),
+                     col_w - Inches(0.30), Inches(0.20),
+                     "STRESS DISPERSION FROM:", size=8,
+                     bold=True, color=ACCENT)
+        _add_textbox(slide, x + Inches(0.20), col_y + Inches(2.85),
+                     col_w - Inches(0.30), Inches(0.40),
+                     dispersion, size=9.5, italic=True, color=INK,
+                     line_spacing=1.25)
+
+    # Bottom takeaway bar
+    _add_rect(slide, Inches(0.55), Inches(6.40),
+              Inches(12.2), Inches(0.55), INK)
+    _add_textbox(slide, Inches(0.85), Inches(6.50),
+                 Inches(11.6), Inches(0.40),
+                 "I can sketch the framework — calibrating any of these "
+                 "to covenant-relevant numbers needs the desk's private "
+                 "NAV marks. The reflex is the asset; calibration is the "
+                 "conversation.",
+                 size=11, italic=True, color=BG, line_spacing=1.30)
+
+
+def slide_12_about(prs):
+    slide = prs.slides.add_slide(prs.slide_layouts[6])
+    _slide_chrome(slide, page_num=12, total_pages=TOTAL_PAGES,
+                  eyebrow="10  ·  About me",
                   title="An engineer applying to a non-engineering seat")
 
     # Left — bio
@@ -721,7 +818,7 @@ def slide_11_about(prs):
                        color=INK, line_spacing=1.30, space_before=4)
 
 
-def slide_12_close(prs):
+def slide_13_close(prs):
     slide = prs.slides.add_slide(prs.slide_layouts[6])
     # Full slate background
     _add_rect(slide, Inches(0), Inches(0), SLIDE_W, SLIDE_H, INK)
@@ -782,8 +879,9 @@ def main():
     slide_08_heatmap(prs, figures / "nav_ltv_heatmap.png")
     slide_09_punchline(prs)
     slide_10_limits_and_next(prs)
-    slide_11_about(prs)
-    slide_12_close(prs)
+    slide_11_beyond(prs)
+    slide_12_about(prs)
+    slide_13_close(prs)
 
     prs.save(out_path)
     print(f"Deck saved to: {out_path}")
