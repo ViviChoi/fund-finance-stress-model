@@ -1,0 +1,19 @@
+# Top-level requirements file.
+#
+# Streamlit Cloud (share.streamlit.io) auto-discovers this file at the
+# repository root and uses it to provision the deployment's Python
+# environment.
+#
+# For local development, the same dependencies are split into:
+#   code/requirements.txt          — core (always installable)
+#   code/requirements-webui.txt    — WebUI add-ons (best-effort)
+# Use ./setup.sh (Mac/Linux) or `python dev.py setup` (any OS) locally.
+
+numpy>=2.0
+pandas>=2.0
+matplotlib>=3.8
+python-pptx>=1.0
+streamlit>=1.32
+plotly>=5.18
+
+# pytest is dev-only and not needed at runtime on Streamlit Cloud.

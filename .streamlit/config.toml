@@ -1,0 +1,19 @@
+# Streamlit Cloud + local-server configuration.
+# https://docs.streamlit.io/library/advanced-features/configuration
+
+[browser]
+gatherUsageStats = false
+
+[theme]
+# Match the deck / WebUI visual system (slate text, white background,
+# accent red borrowing from UniCredit's brand palette without copying it).
+base = "light"
+primaryColor = "#B6142E"
+backgroundColor = "#FFFFFF"
+secondaryBackgroundColor = "#F4F5F7"
+textColor = "#1B1F29"
+
+[server]
+headless = true
+enableXsrfProtection = true
+enableCORS = false
