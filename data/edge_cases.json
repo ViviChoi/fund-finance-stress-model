@@ -1,7 +1,7 @@
 {
   "_meta": {
-    "purpose": "Boundary-condition test funds — for debugging the model and as 'extreme example' material if a banker asks 'what happens if I tweak X?'",
-    "use_in_demo": "Don't lead with these — they're contrived. Pull them out only if Rossella explicitly asks 'what's the breaking point?'",
+    "purpose": "Boundary-condition test funds — for debugging the model and as extreme-example material when probing model behaviour.",
+    "use_in_demo": "Contrived fixtures — pull them out only if a reviewer explicitly asks about boundary behaviour or the breaking point of the model.",
     "disclaimer": "Synthetic test fixtures, not representative of any real fund."
   },
   "funds": [
