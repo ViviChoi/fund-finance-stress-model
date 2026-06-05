@@ -5,3 +5,9 @@ python-pptx>=1.0
 pytest>=8.0
 streamlit>=1.32
 plotly>=5.18
+
+# Optional — only needed if you want to take headless screenshots of the
+# WebUI for inclusion in slides / reports. Skip unless you specifically
+# need automated browser captures:
+#   pip install playwright
+#   python -m playwright install chromium
