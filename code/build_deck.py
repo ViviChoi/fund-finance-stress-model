@@ -1,8 +1,8 @@
 """
-Build the UniCredit Fund Financing First-Look slide deck.
+Build the Fund Finance Stress Model slide deck.
 
 Style: banking presentation (Helvetica, slate / white, content-dense).
-Output: ../slides/UniCredit-FirstLook-Deck.pptx
+Output: ../slides/Fund-Finance-Stress-Model-Deck.pptx
 
 Re-run after changing any figure or text. Idempotent.
 """
@@ -29,7 +29,7 @@ SLIDE_H = Inches(7.5)
 
 INK         = RGBColor(0x1B, 0x1F, 0x29)   # body text (deep slate)
 INK_SOFT    = RGBColor(0x55, 0x5B, 0x6B)   # captions / footnotes
-ACCENT      = RGBColor(0xB6, 0x14, 0x2E)   # UniCredit-ish red (not exact)
+ACCENT      = RGBColor(0xB6, 0x14, 0x2E)   # accent red — banking-style
 ACCENT_SOFT = RGBColor(0xD7, 0xAE, 0xB5)
 DIVIDER     = RGBColor(0xC9, 0xCD, 0xD6)
 BG          = RGBColor(0xFF, 0xFF, 0xFF)
@@ -141,8 +141,8 @@ def _slide_chrome(slide, *, page_num, total_pages, eyebrow=None, title=None):
               Inches(12.78), Inches(7.10), color=DIVIDER, weight=0.5)
     _add_textbox(
         slide, Inches(0.55), Inches(7.18), Inches(10), Inches(0.30),
-        "UniCredit Fund Financing  ·  First Look  ·  Jiawen Cc  ·  "
-        "Polimi EE M.Sc.  ·  June 2026",
+        "Fund Finance Stress Model  ·  Jiawen Cc  ·  Polimi EE M.Sc.  ·  "
+        "June 2026",
         size=9, color=INK_SOFT,
     )
     _add_textbox(
@@ -181,7 +181,7 @@ def slide_01_title(prs):
     )
     _add_textbox(
         slide, Inches(0.55), Inches(6.25), Inches(3.8), Inches(0.3),
-        "Prepared for UniCredit CIB · Fund Financing",
+        "A sector-decomposed NAV facility risk model",
         size=11, italic=True, color=ACCENT_SOFT,
     )
     _add_textbox(
@@ -849,8 +849,7 @@ def slide_13_close(prs):
                  size=12, color=ACCENT_SOFT)
     _add_textbox(slide, Inches(0.55), Inches(6.40),
                  Inches(12), Inches(0.4),
-                 "Source code + page + interview prep:  "
-                 "Desktop/UniCredit-FundFinancing-Application/",
+                 "github.com/ViviChoi/fund-finance-stress-model",
                  size=11, italic=True, color=ACCENT_SOFT)
 
 
@@ -863,7 +862,7 @@ def main():
     figures = here.parent / "figures"
     slides_dir = here.parent / "slides"
     slides_dir.mkdir(exist_ok=True)
-    out_path = slides_dir / "UniCredit-FirstLook-Deck.pptx"
+    out_path = slides_dir / "Fund-Finance-Stress-Model-Deck.pptx"
 
     prs = Presentation()
     prs.slide_width = SLIDE_W

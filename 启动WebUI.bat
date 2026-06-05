@@ -1,6 +1,6 @@
 @echo off
 REM ============================================================
-REM  Windows double-click launcher for the UniCredit First Look WebUI.
+REM  Windows double-click launcher for the Fund Finance Stress Model WebUI.
 REM
 REM  Double-click this file in Explorer to:
 REM    1. Auto-setup the Python environment if it's missing
@@ -18,8 +18,8 @@ cls
 echo.
 echo  ============================================================
 echo.
-echo    UniCredit Fund Financing - First Look
-echo    Power-Electronics Risk Lens on NAV Facilities
+echo    Fund Finance Stress Model
+echo    A Power-Electronics Sub-Sector Risk Lens
 echo.
 echo  ============================================================
 echo.

@@ -6,7 +6,8 @@ gatherUsageStats = false
 
 [theme]
 # Match the deck / WebUI visual system (slate text, white background,
-# accent red borrowing from UniCredit's brand palette without copying it).
+# accent red borrowing a banking-style palette without copying any
+# specific institution's brand).
 base = "light"
 primaryColor = "#B6142E"
 backgroundColor = "#FFFFFF"

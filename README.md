@@ -50,7 +50,7 @@ Or **double-click** `启动WebUI.bat`.
 | `data/example_funds.json` | 5 hypothetical PE fund profiles |
 | `data/edge_cases.json` | 8 boundary-condition test funds |
 | `figures/` | Pre-rendered PNG outputs |
-| `slides/UniCredit-FirstLook-Deck.pptx` | Presentation deck (16:9, 13 slides) |
+| `slides/Fund-Finance-Stress-Model-Deck.pptx` | Presentation deck (16:9, 13 slides) |
 | `content/01-page-content.md` | Long-form write-up of the methodology and results |
 | `tests/test_model.py` | 29 pytest assertions including documented-finding regressions |
 

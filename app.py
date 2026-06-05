@@ -1,5 +1,5 @@
 """
-UniCredit Fund Financing — First Look (Streamlit WebUI)
+Fund Finance Stress Model (Streamlit WebUI)
 
 Interactive front-end for the NAV stress model. Lets a non-coder reader
 (target audience: a CFA-trained recruiter / a banker on the desk) drive
@@ -45,7 +45,7 @@ from nav_stress_model import (   # noqa: E402  (path setup above)
 # ===========================================================================
 
 st.set_page_config(
-    page_title="UniCredit Fund Financing — First Look",
+    page_title="Fund Finance Stress Model",
     page_icon="📊",
     layout="wide",
     initial_sidebar_state="expanded",
@@ -217,8 +217,8 @@ with st.sidebar:
     st.markdown("### About")
     st.markdown(
         f'<p style="color: {ACCENT_SOFT}; font-size: 0.8rem; line-height: 1.4;">'
-        'Built by an EE M.Sc. student at Politecnico di Milano as a first-look '
-        'for UniCredit CIB Fund Financing. Interactive front-end on top of a '
+        'Built by an EE M.Sc. student at Politecnico di Milano. '
+        'Interactive sector-decomposition front-end on top of a '
         '~300-line Python sensitivity model. All numbers illustrative.'
         '</p>',
         unsafe_allow_html=True,
@@ -230,7 +230,7 @@ with st.sidebar:
 # ===========================================================================
 
 if data is None:
-    st.title("UniCredit Fund Financing — First Look")
+    st.title("Fund Finance Stress Model")
     st.markdown('<div class="accent-bar"></div>', unsafe_allow_html=True)
     st.info("Pick a dataset in the sidebar to begin.")
     st.stop()
@@ -242,7 +242,7 @@ funds = data["funds"]
 # Header
 # ===========================================================================
 
-st.title("UniCredit Fund Financing — First Look")
+st.title("Fund Finance Stress Model")
 st.markdown(
     f'<p style="color: {INK_SOFT}; font-size: 1.05rem; margin-top: -0.5rem;">'
     'A power-electronics sub-sector risk lens on NAV / hybrid facilities. '
@@ -667,9 +667,8 @@ with tab_stress:
 st.markdown("---")
 st.markdown(
     f'<p style="color:{INK_SOFT};font-size:0.8rem;text-align:center;">'
-    'UniCredit Fund Financing  ·  First Look  ·  Jiawen Cc  ·  '
-    'Polimi EE M.Sc.  ·  June 2026  ·  '
-    'Built with Streamlit + Plotly  ·  Source: this folder'
+    'Fund Finance Stress Model  ·  Jiawen Cc  ·  Polimi EE M.Sc.  ·  '
+    'June 2026  ·  Built with Streamlit + Plotly'
     '</p>',
     unsafe_allow_html=True,
 )

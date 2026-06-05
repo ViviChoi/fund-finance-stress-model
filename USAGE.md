@@ -42,14 +42,14 @@ On Windows, you can shorten to `dev.cmd setup` / `dev.cmd all` / etc.
 ### Mac / Linux
 
 ```
-$ cd UniCredit-FundFinancing-Application
+$ cd fund-finance-stress-model
 $ ./setup.sh
 ```
 
 ### Windows (PowerShell or cmd)
 
 ```
-> cd UniCredit-FundFinancing-Application
+> cd fund-finance-stress-model
 > python dev.py setup
 ```
 

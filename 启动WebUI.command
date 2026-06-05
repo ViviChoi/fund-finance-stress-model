@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 # ---------------------------------------------------------------------------
-# Mac double-click launcher for the UniCredit First Look WebUI.
+# Mac double-click launcher for the Fund Finance Stress Model WebUI.
 #
 # Double-click this file in Finder to:
 #   1. Auto-setup the Python environment if it's missing
@@ -19,8 +19,8 @@ cat <<'BANNER'
 
 ╔══════════════════════════════════════════════════════════════╗
 ║                                                              ║
-║   UniCredit Fund Financing — First Look                      ║
-║   Power-Electronics Risk Lens on NAV Facilities              ║
+║   Fund Finance Stress Model                                  ║
+║   A Power-Electronics Sub-Sector Risk Lens                   ║
 ║                                                              ║
 ╚══════════════════════════════════════════════════════════════╝
 

@@ -146,8 +146,8 @@ why I picked that sector as the worked example above rather than
 something I would have had to fake.
 
 * What I **don't yet know**: real advance-rate conventions, the
-  workout mechanics of NAV facility breaches, how UniCredit's desk
-  prices hybrid structures, the legal/credit-doc grammar.
+  workout mechanics of NAV facility breaches, how lender desks price
+  hybrid structures in practice, the legal/credit-doc grammar.
 * What I **think I can offer**: an engineer's reflex for decomposing
   heterogeneous portfolios into the actual risk drivers, and the
   technical literacy to do that decomposition fast in sectors where
@@ -253,4 +253,4 @@ sectors. It's that the **reflex itself is the transferable asset**:
 
 *This page was put together as a first-look deliverable. It is not a
 client document, an investment recommendation, or an authoritative
-view on any UniCredit product. All figures are illustrative.*
+view on any specific institution's product. All figures are illustrative.*

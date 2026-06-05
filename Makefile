@@ -1,4 +1,4 @@
-# UniCredit Fund Financing — First Look
+# Fund Finance Stress Model
 # Regenerate figures, deck, and demo artefacts from source.
 #
 # Usage:
@@ -13,7 +13,7 @@ PYTHON := .venv/bin/python
 
 FIGURES    := figures/sector_matrix.png figures/nav_ltv_heatmap.png
 DEMO_FIG   := figures/fund_comparison.png
-DECK       := slides/UniCredit-FirstLook-Deck.pptx
+DECK       := slides/Fund-Finance-Stress-Model-Deck.pptx
 
 .PHONY: all figures deck demo test serve clean distclean check
 

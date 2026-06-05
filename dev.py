@@ -58,7 +58,7 @@ GENERATED_FIGURES = [
     ROOT / "figures" / "nav_ltv_heatmap.png",
     ROOT / "figures" / "fund_comparison.png",
 ]
-GENERATED_DECK = ROOT / "slides" / "UniCredit-FirstLook-Deck.pptx"
+GENERATED_DECK = ROOT / "slides" / "Fund-Finance-Stress-Model-Deck.pptx"
 
 
 # ---------------------------------------------------------------------------

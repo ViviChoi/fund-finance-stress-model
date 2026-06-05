@@ -8,7 +8,7 @@ underwriting under-prices risk when "power electronics" is internally
 heterogeneous (EV / data center / renewable / industrial).
 
 Author : EE Master's student, Politecnico di Milano
-Purpose: Illustrative deliverable for UniCredit CIB Fund Financing outreach
+Purpose: Illustrative sector-decomposition stress model for fund finance
 Notes  : Drawdown assumptions are calibrated to observed 2024-2026 public-
          market sector dispersion (see content/01-page-content.md). They
          are placeholders for first-look discussion, not a production model.
